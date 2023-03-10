@@ -28,9 +28,6 @@ function menu ()
     cat << EOF                                             
 ********************主菜单*********************
 ==============================================
-    填写邀请码：587888  免费获取15张加成卡！
-==============================================
-玩客云刷armbian视频教程：https://www.bilibili.com/video/BV1Va411A7MJ
 
 `echo -e "\033[35m 1)32位设备安装（玩客云）\033[0m$zt11"`
 `echo -e "\033[35m 2)64位设备安装（斐讯N1）\033[0m$zt22"`
@@ -115,12 +112,12 @@ function withdraw()
 	read -p "
 每周三自动提现星愿到绑定的支付宝账号！提现到银行卡有需要可以提交需求
 
-开发不易，新来的朋友填我的推荐码 587888 支持一下，感谢！
+开发不易，感谢！
 	
 取消请按Crtl+C，继续请按回车..."
 	#自动提现
 	cd /root/587888/
-	wget https://yjce1314.gitee.io/tt/withdraw.sh
+	wget https://github.com/Mr-linao/tt/edit/master/tt/withdraw.sh
 	chmod -R 777 *
 	mm=$(date +%M)
 	sed -i sed -i "16a $mm 8 * * 3	root	/root/587888/withdraw.sh" /etc/crontab /etc/crontab
@@ -138,7 +135,7 @@ function login()
 	read -p "
 本功能全自动领取星愿！如果token失效也可以重新获取token
 
-开发不易，新来的朋友填我的推荐码 587888 支持一下，感谢！
+开发不易，感谢！
 
 取消请按Crtl+C，继续请按回车..."
 cd /root/587888/
@@ -244,7 +241,7 @@ function install()
 	config=$(cat /root/587888/config.json)
 	zt1=$( echo $config | jq '.ttversion' | sed 's/\"//g' )
 	if [[ $zt1 = 32 || $zt1 = 64 ]]; then
-	echo "甜糖已安装，如需重新安装，请使用本程序卸载后运行脚本： wget -O start.sh https://yjce1314.gitee.io/tt/start.sh && sh start.sh  重新安装！"
+	echo "甜糖已安装，如需重新安装，请使用本程序卸载后运行脚本： wget -O start.sh https://github.com/Mr-linao/tt/edit/master/tt/start.sh && sh start.sh  重新安装！"
 	else
 
 	read -p "
