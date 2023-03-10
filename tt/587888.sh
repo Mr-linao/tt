@@ -117,7 +117,7 @@ function withdraw()
 取消请按Crtl+C，继续请按回车..."
 	#自动提现
 	cd /root/587888/
-	wget https://github.com/Mr-linao/tt/edit/master/tt/withdraw.sh
+	wget https://github.com/Mr-linao/ttbf/tree/master/ttwithdraw.sh
 	chmod -R 777 *
 	mm=$(date +%M)
 	sed -i sed -i "16a $mm 8 * * 3	root	/root/587888/withdraw.sh" /etc/crontab /etc/crontab
@@ -152,7 +152,7 @@ if [[ ${#tel} = 11 ]];then
 				#config token $tokenText
 				echo $tokenText > token.txt
 				#写监控脚本
-				wget https://yjce1314.gitee.io/tt/promote.sh
+				wget https://github.com/Mr-linao/ttbf/tree/master/ttpromote.sh
 				chmod -R 777 *
 				mm=$(date +%M)
 				sed -i "16a $mm 4 * * *	root	/root/587888/promote.sh" /etc/crontab
@@ -241,7 +241,7 @@ function install()
 	config=$(cat /root/587888/config.json)
 	zt1=$( echo $config | jq '.ttversion' | sed 's/\"//g' )
 	if [[ $zt1 = 32 || $zt1 = 64 ]]; then
-	echo "甜糖已安装，如需重新安装，请使用本程序卸载后运行脚本： wget -O start.sh https://github.com/Mr-linao/tt/edit/master/tt/start.sh && sh start.sh  重新安装！"
+	echo "甜糖已安装，如需重新安装，请使用本程序卸载后运行脚本： wget -O start.sh https://github.com/Mr-linao/ttbf/tree/master/ttstart.sh && sh start.sh  重新安装！"
 	else
 
 	read -p "
@@ -268,9 +268,9 @@ tips：建议看容量挂载，或者填入【 LABEL="587888" 】并把磁盘名
 			mkdir /usr/node
 			cd /usr/node/
 			
-			wget https://yjce1314.gitee.io/tt/ttnode$1 -O ttnode
-			wget https://yjce1314.gitee.io/tt/crash_monitor.sh
-			wget https://yjce1314.gitee.io/tt/log.log
+			wget https://github.com/Mr-linao/ttbf/tree/master/ttttnode$1 -O ttnode
+			wget https://github.com/Mr-linao/ttbf/tree/master/ttcrash_monitor.sh
+			wget https://github.com/Mr-linao/ttbf/tree/master/ttlog.log
 			chmod -R 777 *
 			
 			sed -i "12a mount $fenqu /mnts/\nservice sshd start\n/usr/node/ttnode -p /mnts" /etc/rc.local
@@ -282,7 +282,7 @@ tips：建议看容量挂载，或者填入【 LABEL="587888" 】并把磁盘名
 			sed -i '14a */1 * * * *	root	/usr/node/crash_monitor.sh' /etc/crontab
 			
 			cd  /root/587888/
-			wget https://yjce1314.gitee.io/tt/update.sh
+			wget https://github.com/Mr-linao/ttbf/tree/master/ttupdate.sh
 			chmod -R 777 *
 			sed -i '15a 30 6 * * *	root	/root/587888/update.sh' /etc/crontab
 			
